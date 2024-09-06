@@ -48,13 +48,13 @@
         # `nix develop` への対応。
         devShells.default = pkgs.mkShell {
           buildInputs = tools;
-					shellHook = ''
-						if [ -n "$SHELL" ]; then
-							exec $SHELL
-						else
-							echo "SHELL environment variable is not set. Using default shell."
-						fi
-					'';
+          shellHook = ''
+            if [ -n "$SHELL" ]; then
+              exec $SHELL
+            else
+              echo "SHELL environment variable is not set. Using default shell."
+            fi
+          '';
         };
 
         formatter = pkgs.nixpkgs-fmt;
