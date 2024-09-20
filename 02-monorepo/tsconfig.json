@@ -1,0 +1,14 @@
+{
+	"include": [],
+	"references": [
+		{
+			"path": "packages/cli"
+		},
+		{
+			"path": "packages/common"
+		},
+		{
+			"path": "packages/web"
+		}
+	]
+}

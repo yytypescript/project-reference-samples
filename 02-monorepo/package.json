@@ -1,0 +1,17 @@
+{
+	"name": "02-monorepo",
+	"private": true,
+	"workspaces": [
+		"packages/*"
+	],
+	"scripts": {
+		"build": "tsc -b",
+		"watch": "tsc -b -w",
+		"run-web": "node packages/web/dist/index.js",
+		"run-cli": "node packages/cli/dist/index.js"
+	},
+	"devDependencies": {
+		"typescript": "^5.5.4"
+	},
+	"packageManager": "yarn@4.4.0"
+}

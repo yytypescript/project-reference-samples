@@ -1,0 +1,7 @@
+{
+	"name": "@company/cli",
+	"type": "module",
+	"dependencies": {
+		"@company/common": "workspace:^"
+	}
+}
