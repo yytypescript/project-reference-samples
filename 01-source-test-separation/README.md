@@ -69,7 +69,7 @@ graph TD
 
 ## 使用方法
 
-1. 依存関係のインストール: `yarn install`
-2. ソースコードのビルド: `yarn tsc -b tsconfig.src.json`
-3. テストの実行: `yarn vitest`
-4. 全体のコンパイルチェック: `yarn tsc -b`
+1. 依存関係のインストール: `npm install`
+2. ソースコードのビルド: `npx tsc -b tsconfig.src.json`
+3. テストの実行: `npx vitest run`
+4. 全体のコンパイルチェック: `npx tsc -b`

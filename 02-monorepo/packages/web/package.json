@@ -1,7 +1,8 @@
 {
-	"name": "@company/web",
-	"type": "module",
-	"dependencies": {
-		"@company/common": "workspace:^"
-	}
+  "name": "@company/web",
+  "type": "module",
+  "dependencies": {
+    "@company/common": "*"
+  }
 }
+

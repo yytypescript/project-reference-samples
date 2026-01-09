@@ -49,15 +49,17 @@ graph TD
   "private": true,
   "workspaces": [
     "packages/*"
-  ],
-  "devDependencies": {
-    "typescript": "^5.5.4"
-  },
-  "packageManager": "yarn@4.4.0"
+  ]
 }
 ```
 
-いろいろ書いてありますが、重要なのは`workspaces`の部分です。これはYarnワークスペースの設定です。これがあることで、この`package.json`があるディレクトリがモノレポのルートディレクトリであるという目印になります。加えて、ここで指定したファイルパスにマッチするディレクトリが、パッケージとしてYarnに認識されるようになります。ここでは、`packages/*`となっているので、それにマッチする`packages/cli`, `packages/common`, `packages/web`がパッケージとして認識されます。この設定は、あくまでYarnワークスペース固有の設定であり、TypeScriptのプロジェクトリファレンスの機能ではありませんが、両者はセットで用いると便利なので、ここで取り上げています。
+次に、TypeScriptをインストールします：
+
+```shell
+npm install -D typescript
+```
+
+いろいろ書いてありますが、重要なのは`workspaces`の部分です。これはnpmワークスペースの設定です。これがあることで、この`package.json`があるディレクトリがモノレポのルートディレクトリであるという目印になります。加えて、ここで指定したファイルパスにマッチするディレクトリが、パッケージとしてnpmに認識されるようになります。ここでは、`packages/*`となっているので、それにマッチする`packages/cli`, `packages/common`, `packages/web`がパッケージとして認識されます。この設定は、あくまでnpmワークスペース固有の設定であり、TypeScriptのプロジェクトリファレンスの機能ではありませんが、両者はセットで用いると便利なので、ここで取り上げています。
 
 ## 共通の設定ファイルの作成
 
@@ -157,7 +159,7 @@ export function helloWorld(): string {
   "name": "@company/cli",
   "type": "module",
   "dependencies": {
-    "@company/common": "workspace:^"
+    "@company/common": "*"
   }
 }
 ```
@@ -198,7 +200,7 @@ console.log(helloWorld());
   "name": "@company/web",
   "type": "module",
   "dependencies": {
-    "@company/common": "workspace:^"
+    "@company/common": "*"
   }
 }
 ```
@@ -226,10 +228,10 @@ console.log(helloWorld());
 
 ## インストール
 
-`cli`や`web`から`common`への依存がパッケージ
+依存関係をインストールします：
 
 ```shell
-yarn install
+npm install
 ```
 
 ## ビルド
@@ -237,7 +239,7 @@ yarn install
 モノレポ全体をビルドしてみましょう。
 
 ```shell
-yarn tsc -b
+npx tsc -b
 ```
 
 これを実行すると、各パッケージに`dist`ディレクトリが作られ、コンパイルされたJavaScriptが生成されます。
